@@ -13,8 +13,8 @@ import { LayoutTestimonialSection } from "../components/home/LayoutTestimonialSe
 import { Navbar as LayoutNavbar } from "@/components/layout/navbar";
 import { getAuthSession } from "@/lib/auth/session";
 
-export default async function Home() {
-  const session = await getAuthSession();
+export default function Home() {
+  const session = getAuthSession();
   // Simple toggles so agents/users can hide sections without touching JSX.
   // Use ONLY_SECTIONS (comma list) to whitelist, or HIDE_SECTIONS to blacklist.
   const only = (process.env.ONLY_SECTIONS ?? "")
