@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth/session";
 import { db } from "@/lib/db/client";
 import { notes, contacts, companies, deals } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 import NotesClient from "./client";
 
 export default async function NotesPage() {
@@ -10,24 +11,24 @@ export default async function NotesPage() {
   const noteRows = await db
     .select()
     .from(notes)
-    .where(notes.teamId.eq(session.teamId))
+    .where(eq(notes.teamId, session.teamId))
     .orderBy(notes.createdAt);
 
   // Related object picklists
   const contactRows = await db
     .select({ id: contacts.id, firstName: contacts.firstName, lastName: contacts.lastName })
     .from(contacts)
-    .where(contacts.teamId.eq(session.teamId));
+    .where(eq(contacts.teamId, session.teamId));
 
   const companyRows = await db
     .select({ id: companies.id, name: companies.name })
     .from(companies)
-    .where(companies.teamId.eq(session.teamId));
+    .where(eq(companies.teamId, session.teamId));
 
   const dealRows = await db
     .select({ id: deals.id, name: deals.name })
     .from(deals)
-    .where(deals.teamId.eq(session.teamId));
+    .where(eq(deals.teamId, session.teamId));
 
   return (
     <NotesClient
