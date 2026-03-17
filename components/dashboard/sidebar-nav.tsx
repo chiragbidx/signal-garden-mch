@@ -26,11 +26,11 @@ type NavItem = {
 
 const sections: { title: string; items: NavItem[] }[] = [
   {
-    title: "Platform",
+    title: "CRM",
     items: [
       { label: "Overview", href: "/dashboard", icon: Home },
       {
-        label: "Feature",
+        label: "Clients",
         href: "/dashboard/feature",
         icon: Hammer,
       },
