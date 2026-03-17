@@ -53,9 +53,12 @@ export const LayoutContactSection = () => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { firstName, lastName, email, subject, message } = values;
-    console.log(values);
-
-    const mailToLink = `mailto:${contact.mailtoAddress}?subject=${subject}&body=Hello, I am ${firstName} ${lastName}. My email is ${email}. %0D%0A${message}`;
+    // Changed: Will now send to hi@chirag.co and mention this goes directly to owner.
+    const mailToLink = `mailto:${contact.mailtoAddress}?subject=${encodeURIComponent(
+      subject
+    )}&body=Hi Chirag,%0D%0A%0D%0AMessage from ${firstName} ${lastName} (${email}):%0D%0A${encodeURIComponent(
+      message
+    )}%0D%0A%0D%0ARegards,%0D%0AClientNest Contact Form`;
 
     window.location.assign(mailToLink);
   }
@@ -84,7 +87,6 @@ export const LayoutContactSection = () => {
                 <Building2 />
                 <div className="font-bold">{contact.info.address.label}</div>
               </div>
-
               <div>{contact.info.address.value}</div>
             </div>
 
@@ -93,7 +95,6 @@ export const LayoutContactSection = () => {
                 <Phone />
                 <div className="font-bold">{contact.info.phone.label}</div>
               </div>
-
               <div>{contact.info.phone.value}</div>
             </div>
 
@@ -102,7 +103,6 @@ export const LayoutContactSection = () => {
                 <Mail />
                 <div className="font-bold">{contact.info.email.label}</div>
               </div>
-
               <div>{contact.info.email.value}</div>
             </div>
 
@@ -111,7 +111,6 @@ export const LayoutContactSection = () => {
                 <Clock />
                 <div className="font-bold">{contact.info.hours.label}</div>
               </div>
-
               <div>
                 {hoursLines.map((line, idx) => (
                   <div key={idx}>{line}</div>
@@ -137,7 +136,7 @@ export const LayoutContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Leopoldo" {...field} />
+                          <Input placeholder="Chirag" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -150,7 +149,7 @@ export const LayoutContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Miranda" {...field} />
+                          <Input placeholder="Dodiya" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -218,12 +217,11 @@ export const LayoutContactSection = () => {
                         <FormControl>
                           <Textarea
                             rows={5}
-                            placeholder="Tell us about your SaaS idea, stage, and timeline..."
+                            placeholder="Share your CRM goals or import questions..."
                             className="resize-none"
                             {...field}
                           />
                         </FormControl>
-
                         <FormMessage />
                       </FormItem>
                     )}
