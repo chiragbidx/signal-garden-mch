@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth/session";
 import { db } from "@/lib/db/client";
 import { companies } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 import CompaniesClient from "./client";
 
 // Server component – Companies dashboard
@@ -12,7 +13,7 @@ export default async function CompaniesPage() {
   const companyRows = await db
     .select()
     .from(companies)
-    .where(companies.teamId.eq(session.teamId))
+    .where(eq(companies.teamId, session.teamId))
     .orderBy(companies.createdAt);
 
   return (
