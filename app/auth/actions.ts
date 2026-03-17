@@ -4,14 +4,14 @@ import { z } from "zod";
 import bcrypt from "bcryptjs";
 import { db } from "@/lib/db/client";
 import { users, teams, teamMembers } from "@/lib/db/schema";
-import { setAuthSession, clearAuthSession } from "@/lib/auth/session";
+import { setAuthSession, clearAuthSession, getAuthSession } from "@/lib/auth/session";
 import { eq } from "drizzle-orm";
 
 // Existing Zod schemas...
 
 const signUpSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8), // example
+  password: z.string().min(8),
   firstName: z.string().min(1),
   lastName: z.string().min(1),
 });
@@ -21,7 +21,6 @@ const signInSchema = z.object({
   password: z.string(),
 });
 
-// SIGNUP
 export async function signUpWithPassword(formData) {
   const parsed = signUpSchema.parse(formData);
 
@@ -61,12 +60,11 @@ export async function signUpWithPassword(formData) {
     role: "owner",
   });
 
-  await setAuthSession(user.id, user.email); // Now injects teamId/role
+  await setAuthSession(user.id, user.email);
 
   return { email: parsed.email };
 }
 
-// SIGNIN
 export async function signInWithPassword(formData) {
   const parsed = signInSchema.parse(formData);
 
@@ -98,12 +96,11 @@ export async function signInWithPassword(formData) {
     throw new Error("User has no active team.");
   }
 
-  await setAuthSession(user.id, user.email); // Always sets teamId/role
+  await setAuthSession(user.id, user.email);
 
   return { email: parsed.email };
 }
 
-// SIGN OUT
 export async function signOutAction() {
   clearAuthSession();
   return { ok: true };
