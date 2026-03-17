@@ -1,53 +1,71 @@
 import { cookies } from "next/headers";
+import { db } from "@/lib/db/client";
+import { teamMembers, teams } from "@/lib/db/schema";
 
-export const AUTH_COOKIE_NAME = "panda_auth_session";
-
-const maxAgeSeconds = 60 * 60 * 24 * 7;
-const authCookieOptions = {
+// Session cookie config
+const SESSION_COOKIE = "panda_auth_session";
+const SESSION_OPTIONS = {
   httpOnly: true,
   sameSite: "none" as const,
   secure: true,
   path: "/",
+  maxAge: 60 * 60 * 24 * 30, // 30 days
 };
 
-export type AuthSession = {
+// The session payload now includes teamId and role
+export interface AuthSession {
   userId: string;
   email: string;
-};
-
-export async function createAuthSession(userId: string, email: string) {
-  const cookieStore = await cookies();
-  const payload: AuthSession = { userId, email };
-  cookieStore.set(AUTH_COOKIE_NAME, JSON.stringify(payload), {
-    ...authCookieOptions,
-    maxAge: maxAgeSeconds,
-  });
+  teamId: string;
+  role: string;
 }
 
-export async function clearAuthSession() {
-  const cookieStore = await cookies();
-  cookieStore.set(AUTH_COOKIE_NAME, "", {
-    ...authCookieOptions,
-    maxAge: 0,
-  });
+// Set the session cookie with teamId and role
+export async function setAuthSession(userId: string, email: string) {
+  // Look up team membership for teamId and role
+  const [membership] = await db
+    .select({
+      teamId: teamMembers.teamId,
+      role: teamMembers.role,
+    })
+    .from(teamMembers)
+    .where(teamMembers.userId.eq(userId))
+    .limit(1);
+
+  if (!membership) {
+    throw new Error("User must have an active team");
+  }
+
+  const session: AuthSession = {
+    userId,
+    email,
+    teamId: membership.teamId,
+    role: membership.role,
+  };
+  cookies().set(
+    SESSION_COOKIE,
+    JSON.stringify(session),
+    SESSION_OPTIONS
+  );
 }
 
-export async function getAuthSession(): Promise<AuthSession | null> {
-  const cookieStore = await cookies();
-  const raw = cookieStore.get(AUTH_COOKIE_NAME)?.value;
-  if (!raw) return null;
+// Get the session cookie, parse and return full session, or null
+export function getAuthSession(): AuthSession | null {
+  const value = cookies().get(SESSION_COOKIE)?.value;
+  if (!value) return null;
   try {
-    const parsed = JSON.parse(raw);
-    if (typeof parsed === "object" && parsed.userId && parsed.email) {
-      return parsed as AuthSession;
-    }
-    return null;
+    const data = JSON.parse(value);
+    if (!("userId" in data) || !("email" in data) || !("teamId" in data) || !("role" in data)) return null;
+    return data as AuthSession;
   } catch {
     return null;
   }
 }
 
-export async function getAuthSessionEmail(): Promise<string | null> {
-  const session = await getAuthSession();
-  return session?.email ?? null;
+// Clear/expire the session cookie
+export function clearAuthSession() {
+  cookies().set(SESSION_COOKIE, "", {
+    ...SESSION_OPTIONS,
+    maxAge: 0,
+  });
 }
