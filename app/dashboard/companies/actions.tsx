@@ -18,8 +18,8 @@ const companySchema = z.object({
 // CREATE
 export async function createCompanyAction(formData) {
   const session = await getAuthSession();
-  if (!session) {
-    throw new Error("Not authenticated");
+  if (!session || !session.teamId) {
+    throw new Error("Not authenticated or missing team context");
   }
   const data = companySchema.parse(formData);
   await db.insert(companies).values({
