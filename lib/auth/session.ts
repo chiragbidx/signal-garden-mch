@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { cookies as getCookies } from "next/headers";
 import { db } from "@/lib/db/client";
 import { teamMembers, teams } from "@/lib/db/schema";
 
@@ -42,7 +42,7 @@ export async function setAuthSession(userId: string, email: string) {
     teamId: membership.teamId,
     role: membership.role,
   };
-  cookies().set(
+  getCookies().set(
     SESSION_COOKIE,
     JSON.stringify(session),
     SESSION_OPTIONS
@@ -51,7 +51,7 @@ export async function setAuthSession(userId: string, email: string) {
 
 // Get the session cookie, parse and return full session, or null
 export function getAuthSession(): AuthSession | null {
-  const value = cookies().get(SESSION_COOKIE)?.value;
+  const value = getCookies().get(SESSION_COOKIE)?.value;
   if (!value) return null;
   try {
     const data = JSON.parse(value);
@@ -64,7 +64,7 @@ export function getAuthSession(): AuthSession | null {
 
 // Clear/expire the session cookie
 export function clearAuthSession() {
-  cookies().set(SESSION_COOKIE, "", {
+  getCookies().set(SESSION_COOKIE, "", {
     ...SESSION_OPTIONS,
     maxAge: 0,
   });
