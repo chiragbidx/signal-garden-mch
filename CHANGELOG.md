@@ -20,3 +20,14 @@
   - drizzle/0003_add_crm_core_tables.sql
   - drizzle/meta/_journal.json
   - components/dashboard/sidebar-nav.tsx
+
+## 2024-06-11
+
+- Fixed cookie/session TypeError due to breaking change in Next.js App Router cookies API.
+  - Refactored `lib/auth/session.ts` to use `cookies()` API properly for getting and setting session cookies in all contexts
+  - Updated `app/page.tsx` to use non-async `getAuthSession()` in server render
+  - Session logic is now stable on the latest Next.js 16+ App Router
+
+  **Files changed**:
+  - lib/auth/session.ts
+  - app/page.tsx
