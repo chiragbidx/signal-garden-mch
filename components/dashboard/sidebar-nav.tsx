@@ -6,10 +6,16 @@ import { usePathname } from "next/navigation";
 import {
   ChevronDown,
   Home,
-  Hammer,
-  Settings,
   Users,
   CreditCard,
+  Settings,
+  UserCircle,
+  Building2,
+  Landmark,
+  StickyNote,
+  ListTodo,
+  Briefcase,
+  Activity as ActivityIcon,
 } from "lucide-react";
 import {
   Collapsible,
@@ -29,11 +35,13 @@ const sections: { title: string; items: NavItem[] }[] = [
     title: "CRM",
     items: [
       { label: "Overview", href: "/dashboard", icon: Home },
-      {
-        label: "Clients",
-        href: "/dashboard/feature",
-        icon: Hammer,
-      },
+      { label: "Contacts", href: "/dashboard/contacts", icon: UserCircle },
+      { label: "Companies", href: "/dashboard/companies", icon: Building2 },
+      { label: "Deals", href: "/dashboard/deals", icon: Briefcase },
+      { label: "Pipelines", href: "/dashboard/pipelines", icon: Landmark },
+      { label: "Notes", href: "/dashboard/notes", icon: StickyNote },
+      { label: "Tasks", href: "/dashboard/tasks", icon: ListTodo },
+      { label: "Activities", href: "/dashboard/activities", icon: ActivityIcon },
     ],
   },
   {
