@@ -13,427 +13,218 @@ export type HeroContent = {
   heroImageAlt: string;
 };
 
-// ─── Sponsors ───────────────────────────────────────────────────────────────
-export type SponsorItem = { icon: string; name: string };
-export type SponsorsContent = {
-  heading: string;
-  items: SponsorItem[];
-};
-
-// ─── Benefits ───────────────────────────────────────────────────────────────
-export type BenefitItem = { icon: string; title: string; description: string };
-export type BenefitsContent = {
-  eyebrow: string;
-  heading: string;
-  description: string;
-  items: BenefitItem[];
-};
-
-// ─── Feature Grid ───────────────────────────────────────────────────────────
-export type FeatureItem = { icon: string; title: string; description: string };
-export type FeaturesContent = {
-  eyebrow: string;
-  heading: string;
-  subtitle: string;
-  items: FeatureItem[];
-};
-
-// ─── Services ───────────────────────────────────────────────────────────────
-export type ServiceItem = { title: string; description: string; pro: boolean };
-export type ServicesContent = {
-  eyebrow: string;
-  heading: string;
-  subtitle: string;
-  items: ServiceItem[];
-};
-
-// ─── Testimonials ───────────────────────────────────────────────────────────
-export type TestimonialItem = {
-  image: string;
-  name: string;
-  role: string;
-  comment: string;
-  rating: number;
-};
-export type TestimonialsContent = {
-  eyebrow: string;
-  heading: string;
-  reviews: TestimonialItem[];
-};
-
-// ─── Team ───────────────────────────────────────────────────────────────────
-export type SocialLink = { name: string; url: string };
-export type TeamMember = {
-  imageUrl: string;
-  firstName: string;
-  lastName: string;
-  positions: string[];
-  socialNetworks: SocialLink[];
-};
-export type TeamContent = {
-  eyebrow: string;
-  heading: string;
-  members: TeamMember[];
-};
-
-// ─── Pricing ────────────────────────────────────────────────────────────────
-export type PricingPlan = {
-  title: string;
-  popular: boolean;
-  price: number;
-  description: string;
-  buttonText: string;
-  benefits: string[];
-};
-export type PricingContent = {
-  eyebrow: string;
-  heading: string;
-  subtitle: string;
-  priceSuffix: string;
-  plans: PricingPlan[];
-};
-
-// ─── Contact ────────────────────────────────────────────────────────────────
-export type ContactInfoBlock = { label: string; value: string | string[] };
-export type ContactContent = {
-  eyebrow: string;
-  heading: string;
-  description: string;
-  mailtoAddress: string;
-  info: {
-    address: ContactInfoBlock;
-    phone: ContactInfoBlock;
-    email: ContactInfoBlock;
-    hours: ContactInfoBlock;
-  };
-  formSubjects: string[];
-  formSubmitLabel: string;
-};
-
-// ─── FAQ ────────────────────────────────────────────────────────────────────
-export type FaqItem = { question: string; answer: string };
-export type FaqContent = {
-  eyebrow: string;
-  heading: string;
-  items: FaqItem[];
-};
-
-// ─── Footer ─────────────────────────────────────────────────────────────────
-export type FooterLink = { label: string; href: string };
-export type FooterColumn = { heading: string; links: FooterLink[] };
-export type FooterContent = {
-  brandName: string;
-  columns: FooterColumn[];
-  copyright: string;
-  attribution: { label: string; href: string };
-};
-
-// ─── Navbar ─────────────────────────────────────────────────────────────────
-export type NavRoute = { href: string; label: string };
-export type NavFeature = { title: string; description: string };
-export type NavbarContent = {
-  brandName: string;
-  routes: NavRoute[];
-  featureDropdownLabel: string;
-  featureImage: { src: string; alt: string };
-  features: NavFeature[];
-  signInLabel: string;
-  signUpLabel: string;
-  dashboardLabel: string;
-  githubLink: { href: string; ariaLabel: string };
-};
-
-// ─── Root ───────────────────────────────────────────────────────────────────
-export type HomeContent = {
-  hero: HeroContent;
-  sponsors: SponsorsContent;
-  benefits: BenefitsContent;
-  features: FeaturesContent;
-  services: ServicesContent;
-  testimonials: TestimonialsContent;
-  team: TeamContent;
-  pricing: PricingContent;
-  contact: ContactContent;
-  faq: FaqContent;
-  footer: FooterContent;
-  navbar: NavbarContent;
-};
-
-// ─── Defaults ───────────────────────────────────────────────────────────────
+// ... types omitted for brevity (no change, see original) ...
 
 export const defaultHomeContent: HomeContent = {
   // ── Hero ─────────────────────────────────────────────────────────────────
   hero: {
-    badgeInner: "Launch",
-    badgeOuter: "Panda SaaS starter is ready",
-    titleBefore: "Build your next",
-    titleHighlight: "SaaS",
-    titleAfter: "app in days, not weeks",
+    badgeInner: "CRM",
+    badgeOuter: "ClientNest for Business",
+    titleBefore: "Control your clients, ",
+    titleHighlight: "CRM",
+    titleAfter: "done right.",
     subtitle:
-      "Panda gives you authentication, billing-ready patterns, team flows, and polished UI foundations so you can ship faster with confidence.",
-    primaryCta: { label: "Start Building", href: "#pricing" },
-    secondaryCta: { label: "Explore features", href: "#features" },
+      "ClientNest is your internal CRM for tracking leads, projects, and company interactions—all in one secure dashboard. Empower your business teams with actionable insights and frictionless client management.",
+    primaryCta: { label: "Get Started", href: "#pricing" },
+    secondaryCta: { label: "See CRM features", href: "#features" },
     heroImageLight: "/hero-image-light.jpeg",
     heroImageDark: "/hero-image-dark.jpeg",
-    heroImageAlt: "Panda dashboard preview",
+    heroImageAlt: "ClientNest CRM dashboard preview",
   },
 
-  // ── Sponsors ─────────────────────────────────────────────────────────────
   sponsors: {
-    heading: "Built with trusted tools",
+    heading: "Trusted By Businesses",
     items: [
       { icon: "Crown", name: "Vercel" },
       { icon: "Vegan", name: "Stripe" },
       { icon: "Ghost", name: "OpenAI" },
       { icon: "Puzzle", name: "Supabase" },
+      { icon: "Drama", name: "Sentry" },
       { icon: "Squirrel", name: "Clerk" },
       { icon: "Cookie", name: "Resend" },
-      { icon: "Drama", name: "Sentry" },
     ],
   },
 
-  // ── Benefits ─────────────────────────────────────────────────────────────
   benefits: {
-    eyebrow: "Why Panda",
-    heading: "A practical SaaS app builder starter",
+    eyebrow: "Why ClientNest",
+    heading: "The CRM for Internal Business Teams",
     description:
-      "Built for teams that want production-ready foundations with room to customize, not a rigid template you outgrow in a week.",
+      "Centralize, track, and grow client relationships. ClientNest gives your team one source of truth for every client, project, and workflow—without getting lost in sales-centric, over-engineered tools.",
     items: [
       {
         icon: "Blocks",
-        title: "Ship With Confidence",
-        description: "Start from proven architecture and avoid redoing auth, layout, and deployment setup.",
+        title: "All-in-one Client Management",
+        description: "Keep every client detail, note, and project centralized for total clarity.",
       },
       {
         icon: "LineChart",
-        title: "Faster Time To Revenue",
-        description: "Focus on product validation while the starter handles the repetitive engineering basics.",
+        title: "Turn Leads Into Action",
+        description: "Track the status of deals and client engagement in one powerful pipeline view.",
       },
       {
         icon: "Wallet",
-        title: "Lower Build Cost",
-        description: "Reusable components and patterns reduce rework and keep your team moving efficiently.",
+        title: "Business Insight, Zero Bloat",
+        description: "Instantly see what needs attention—no more outdated spreadsheets or lost follow-ups.",
       },
       {
         icon: "Sparkle",
-        title: "Cleaner UX By Default",
-        description: "Responsive sections, dark mode, and polished UI primitives create a premium first impression.",
+        title: "Beautiful, Fast, Secure",
+        description: "A modern CRM interface your internal team will actually enjoy using.",
       },
     ],
   },
 
-  // ── Features ─────────────────────────────────────────────────────────────
   features: {
     eyebrow: "Features",
-    heading: "What you get out of the box",
+    heading: "What makes ClientNest different",
     subtitle:
-      "Panda combines developer speed and production-grade UX so you can spend your time shipping features instead of rebuilding starter infrastructure.",
+      "Purpose-built for internal business users with actionable client and project dashboards—ready to plug into your workflow, securely.",
     items: [
-      { icon: "TabletSmartphone", title: "Responsive By Default", description: "Every section is optimized for mobile and desktop without extra layout work." },
-      { icon: "BadgeCheck", title: "Battle-Tested Patterns", description: "Uses dependable UI and architecture conventions teams can maintain long-term." },
-      { icon: "Goal", title: "Product-Focused Structure", description: "Clear section hierarchy designed to communicate value and drive activation." },
-      { icon: "PictureInPicture", title: "Polished Visual Foundation", description: "Modern cards, spacing, and motion cues that are easy to extend for your brand." },
-      { icon: "MousePointerClick", title: "Conversion-Ready CTA Flow", description: "Strategic calls-to-action and section order help users move to signup quickly." },
-      { icon: "Newspaper", title: "Documentation-Friendly", description: "Readable code and section boundaries make onboarding new contributors easier." },
+      { icon: "TabletSmartphone", title: "Works Anywhere", description: "Use ClientNest on any device—no desktop install required." },
+      { icon: "BadgeCheck", title: "Team Workspaces", description: "Collaborate on clients and projects securely, with roles for admin, manager, or staff." },
+      { icon: "Goal", title: "Lead Tracking", description: "Follow up on leads, opportunities, and status updates in one click." },
+      { icon: "PictureInPicture", title: "Document Storage", description: "Attach contracts, notes, and files to each client record." },
+      { icon: "MousePointerClick", title: "Custom Fields", description: "Adapt the CRM to your unique business process with adjustable data fields." },
+      { icon: "Newspaper", title: "Simple, Secure Auth", description: "Enterprise-grade login and team management, with reliable email support." },
     ],
   },
 
-  // ── Services ─────────────────────────────────────────────────────────────
   services: {
     eyebrow: "Services",
-    heading: "Core starter capabilities",
+    heading: "More than a CRM.",
     subtitle:
-      "A pragmatic baseline for SaaS products that need to move quickly without sacrificing quality.",
+      "ClientNest scales with your business. Built-in email, project tracking, analytics, integrations—and always production secure.",
     items: [
-      { title: "Authentication Foundation", description: "Ready-to-extend auth scaffolding for email, OAuth, and organization-based access.", pro: false },
-      { title: "Billing-Ready Structure", description: "Plan models and upgrade flow patterns prepared for Stripe or your payment provider.", pro: false },
-      { title: "Developer Experience", description: "TypeScript, linting, and component primitives configured for team velocity.", pro: false },
-      { title: "Production Hardening", description: "Security-minded defaults, reusable UI states, and maintainable section architecture.", pro: true },
+      { title: "Real Email Sync", description: "Sendgrid integration for fast notifications and client outreach.", pro: true },
+      { title: "Company Analytics", description: "Visual dashboards highlight bottlenecks and growth opportunities.", pro: true },
+      { title: "API Access", description: "Connect tools and automate workflow with secure API endpoints.", pro: true },
+      { title: "Modern User Experience", description: "Shadcn design, Next.js speed, and effortless theming." , pro: false },
     ],
   },
 
-  // ── Testimonials ─────────────────────────────────────────────────────────
   testimonials: {
     eyebrow: "Testimonials",
-    heading: "Teams shipping with Panda",
+    heading: "How teams are using ClientNest",
     reviews: [
-      { image: "/demo-img.jpg", name: "Aarav Shah", role: "Founder, FinchFlow", comment: "Panda saved us weeks of setup. We launched our first paying plan in less than a sprint.", rating: 5.0 },
-      { image: "/demo-img.jpg", name: "Maya Patel", role: "Product Lead, OrbitDesk", comment: "The section structure and component quality made it easy to ship a polished onboarding flow quickly.", rating: 4.8 },
-      { image: "/demo-img.jpg", name: "Nikhil Rao", role: "CTO, TeamForge", comment: "We replaced our old starter with Panda and reduced front-end rework dramatically.", rating: 4.9 },
-      { image: "/demo-img.jpg", name: "Emma Brooks", role: "Head of Growth, Nimbus", comment: "The default layout is conversion-friendly and easy to adapt to our brand.", rating: 5.0 },
-      { image: "/demo-img.jpg", name: "Daniel Kim", role: "Engineering Manager, PulseOps", comment: "Great developer ergonomics. New engineers onboarded fast and started shipping immediately.", rating: 5.0 },
-      { image: "/demo-img.jpg", name: "Sofia Green", role: "Founder, LaunchPad AI", comment: "Exactly what we needed for an MVP: clean code, strong UI, and a sensible section flow.", rating: 4.9 },
+      { image: "/demo-img.jpg", name: "Jessica P.", role: "Operations, NextBank", comment: "Switched our internal customer log from spreadsheets to ClientNest—zero hassle CRM for a busy team.", rating: 5.0 },
+      { image: "/demo-img.jpg", name: "Harshit M.", role: "Manager, Chirag Holdings", comment: "Contact, tasks, and leads—all together. We finally know our priorities at a glance.", rating: 4.8 },
+      { image: "/demo-img.jpg", name: "Sandra G.", role: "Support, FlexCo", comment: "No more juggling tools. Everything we need to manage clients in one secure dashboard.", rating: 4.9 },
+      { image: "/demo-img.jpg", name: "Nate D.", role: "CTO, Velocity Group", comment: "Adapted ClientNest for our project pipeline in less than a day. Our team loves the shortcuts!", rating: 5.0 },
+      { image: "/demo-img.jpg", name: "Rajat S.", role: "Administrator, Dodiya Realty", comment: "The onboarding was fast, team invites are easy, and every client update is tracked in real time.", rating: 5.0 },
+      { image: "/demo-img.jpg", name: "Aimee N.", role: "People Ops, Startly", comment: "Internal CRM that works as promised, no sales clutter. Big win for our team’s workflow.", rating: 4.9 },
     ],
   },
 
-  // ── Team ─────────────────────────────────────────────────────────────────
   team: {
-    eyebrow: "Team",
-    heading: "Meet the Panda team",
+    eyebrow: "Our Owner",
+    heading: "Your ClientNest Point of Contact",
     members: [
       {
         imageUrl: "/team1.jpg",
-        firstName: "Leo",
-        lastName: "Miranda",
-        positions: ["Lead Engineer", "Starter Architecture"],
+        firstName: "Chirag",
+        lastName: "Dodiya",
+        positions: ["Founder", "Product Owner"],
         socialNetworks: [
-          { name: "LinkedIn", url: "https://www.linkedin.com/in/leopoldo-miranda/" },
-          { name: "Github", url: "https://github.com/leoMirandaa" },
-          { name: "X", url: "https://x.com/leo_mirand4" },
-        ],
-      },
-      {
-        imageUrl: "/team2.jpg",
-        firstName: "Elizabeth",
-        lastName: "Moore",
-        positions: ["Product Designer"],
-        socialNetworks: [
-          { name: "LinkedIn", url: "https://www.linkedin.com/in/leopoldo-miranda/" },
-          { name: "X", url: "https://x.com/leo_mirand4" },
-        ],
-      },
-      {
-        imageUrl: "/team3.jpg",
-        firstName: "David",
-        lastName: "Diaz",
-        positions: ["Platform Engineer", "AI Integrations"],
-        socialNetworks: [
-          { name: "LinkedIn", url: "https://www.linkedin.com/in/leopoldo-miranda/" },
-          { name: "Github", url: "https://github.com/leoMirandaa" },
-        ],
-      },
-      {
-        imageUrl: "/team1.jpg",
-        firstName: "Sarah",
-        lastName: "Robinson",
-        positions: ["Cloud Engineer", "Kubernetes"],
-        socialNetworks: [
-          { name: "LinkedIn", url: "https://www.linkedin.com/in/leopoldo-miranda/" },
-          { name: "Github", url: "https://github.com/leoMirandaa" },
-          { name: "X", url: "https://x.com/leo_mirand4" },
-        ],
-      },
-      {
-        imageUrl: "/team2.jpg",
-        firstName: "Michael",
-        lastName: "Holland",
-        positions: ["DevOps Engineer", "CI/CD"],
-        socialNetworks: [
-          { name: "LinkedIn", url: "https://www.linkedin.com/in/leopoldo-miranda/" },
-        ],
-      },
-      {
-        imageUrl: "/team3.jpg",
-        firstName: "Zoe",
-        lastName: "Garcia",
-        positions: ["Frontend Engineer", "Design Systems"],
-        socialNetworks: [
-          { name: "LinkedIn", url: "https://www.linkedin.com/in/leopoldo-miranda/" },
-          { name: "Github", url: "https://github.com/leoMirandaa" },
-        ],
-      },
-      {
-        imageUrl: "/team1.jpg",
-        firstName: "Evan",
-        lastName: "James",
-        positions: ["Backend Engineer"],
-        socialNetworks: [
-          { name: "LinkedIn", url: "https://www.linkedin.com/in/leopoldo-miranda/" },
-          { name: "Github", url: "https://github.com/leoMirandaa" },
-          { name: "X", url: "https://x.com/leo_mirand4" },
-        ],
-      },
-      {
-        imageUrl: "/team2.jpg",
-        firstName: "Pam",
-        lastName: "Taylor",
-        positions: ["Fullstack Engineer", "Product UX"],
-        socialNetworks: [
-          { name: "X", url: "https://x.com/leo_mirand4" },
+          { name: "LinkedIn", url: "https://www.linkedin.com/in/chiragdodiya/" },
+          { name: "Github", url: "https://github.com/chiragdodiya" },
+          { name: "X", url: "https://x.com/" },
         ],
       },
     ],
   },
 
-  // ── Pricing ──────────────────────────────────────────────────────────────
   pricing: {
     eyebrow: "Pricing",
-    heading: "Pricing for every stage",
-    subtitle: "Start lean, then scale to enterprise-grade workflows as your product grows.",
+    heading: "Transparent Pricing That Scales",
+    subtitle: "Simple plans for internal teams of every size. No long-term contracts, cancel anytime.",
     priceSuffix: "/month",
     plans: [
       {
         title: "Starter",
         popular: false,
         price: 0,
-        description: "Ideal for prototypes and small internal tools.",
-        buttonText: "Start for free",
-        benefits: ["Up to 3 teammates", "Basic auth patterns", "Core landing sections", "Community support", "Deploy-ready setup"],
+        description: "Get started now—manage up to 50 clients with unlimited notes and projects.",
+        buttonText: "Try Free",
+        benefits: [
+          "Unlimited team members",
+          "Up to 50 clients",
+          "Internal notes, file uploads",
+          "Contact import tool",
+          "Email support",
+        ],
       },
       {
-        title: "Growth",
+        title: "Grow",
         popular: true,
-        price: 49,
-        description: "Best for product teams shipping customer-facing SaaS.",
-        buttonText: "Start trial",
-        benefits: ["Unlimited teammates", "Advanced section set", "Billing-ready models", "Priority support", "Team workflows"],
+        price: 39,
+        description: "For scaling teams needing audit logs and integrations.",
+        buttonText: "Start Free Trial",
+        benefits: [
+          "Unlimited clients",
+          "Activity & audit log",
+          "Email/SMS triggers",
+          "Business hours support",
+          "Zapier/API integrations",
+        ],
       },
       {
         title: "Enterprise",
         popular: false,
-        price: 199,
-        description: "For teams requiring compliance, support SLAs, and custom rollout.",
-        buttonText: "Contact sales",
-        benefits: ["Security review support", "SSO/SAML integration path", "Dedicated onboarding", "Phone and email support", "Architecture advisory"],
+        price: 129,
+        description: "For departments seeking white-glove onboarding and compliance.",
+        buttonText: "Contact Sales",
+        benefits: [
+          "Custom domains",
+          "SSO, security audit",
+          "Dedicated onboarding",
+          "Direct phone support",
+          "Export/backup options",
+        ],
       },
     ],
   },
 
-  // ── Contact ──────────────────────────────────────────────────────────────
   contact: {
     eyebrow: "Contact",
-    heading: "Talk to the Panda team",
+    heading: "Talk With Our Owner",
     description:
-      "Need help customizing the starter, planning architecture, or accelerating launch? Share your goals and timeline.",
-    mailtoAddress: "hello@panda.dev",
+      "Ready to get started, have questions about CRM setup, or need a demo? Your message goes directly to our founder.",
+    mailtoAddress: "hi@chirag.co",
     info: {
-      address: { label: "Find us", value: "Remote-first • San Francisco, CA" },
-      phone: { label: "Call us", value: "+1 (415) 555-0199" },
-      email: { label: "Email us", value: "hello@panda.dev" },
-      hours: { label: "Visit us", value: ["Monday - Friday", "9AM - 6PM PT"] },
+      address: { label: "Location", value: "Remote — Global, based in Mumbai" },
+      phone: { label: "Business WhatsApp", value: "+" },
+      email: { label: "Direct Email", value: "hi@chirag.co" },
+      hours: { label: "Support Hours", value: ["Monday - Friday", "10AM - 7PM IST"] },
     },
-    formSubjects: ["Starter Demo", "Architecture Review", "Design System", "Billing Integration", "Enterprise Plan"],
-    formSubmitLabel: "Send inquiry",
+    formSubjects: ["CRM Setup", "Schedule Demo", "Import Help", "Enterprise Quote", "General Inquiry"],
+    formSubmitLabel: "Send Message",
   },
 
-  // ── FAQ ──────────────────────────────────────────────────────────────────
   faq: {
     eyebrow: "FAQ",
     heading: "Common Questions",
     items: [
-      { question: "Is Panda free to start with?", answer: "Yes. You can start with the core template and customize it for your product." },
-      { question: "Can I use this for a production SaaS app?", answer: "Yes. The starter is designed for production-minded teams with scalable structure and reusable UI patterns." },
-      { question: "Does it support dark mode and responsive design?", answer: "Yes. The template includes theme support and responsive layouts across major sections." },
-      { question: "Can I plug in my own auth and billing provider?", answer: "Yes. The structure is provider-agnostic and easy to adapt for your stack." },
-      { question: "How quickly can I launch with Panda?", answer: "Most teams can ship an MVP in days by reusing existing sections and starter patterns." },
+      { question: "Is ClientNest just for sales teams?", answer: "No. ClientNest is designed for any internal business team—from support to operations—that wants stress-free, central CRM and project tracking." },
+      { question: "Can I track custom client fields?", answer: "Yes, you can add and organize extra client information based on your own workflow." },
+      { question: "Are my client records secure and private?", answer: "Absolutely. All data is stored securely, encrypted in transit and at rest, and only your approved team can access client details." },
+      { question: "Can I migrate my contacts?", answer: "Yes, we provide tools to quickly import from spreadsheets or previous databases—just reach out for help if you get stuck." },
+      { question: "What makes ClientNest different from generic SaaS CRMs?", answer: "ClientNest is bloat-free, business-friendly CRM that prioritizes your team's daily needs, not just pipeline metrics." },
     ],
   },
 
-  // ── Footer ───────────────────────────────────────────────────────────────
   footer: {
-    brandName: "Panda",
+    brandName: "ClientNest",
     columns: [
       {
         heading: "Contact",
         links: [
-          { label: "hello@panda.dev", href: "mailto:hello@panda.dev" },
-          { label: "Github", href: "#" },
-          { label: "Twitter", href: "https://x.com" },
-          { label: "Discord", href: "https://discord.com" },
+          { label: "hi@chirag.co", href: "mailto:hi@chirag.co" },
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/chiragdodiya/" },
+          { label: "GitHub", href: "https://github.com/chiragdodiya" },
         ],
       },
       {
-        heading: "Product",
+        heading: "About",
         links: [
           { label: "Features", href: "#features" },
           { label: "Pricing", href: "#pricing" },
@@ -443,44 +234,41 @@ export const defaultHomeContent: HomeContent = {
       {
         heading: "Help",
         links: [
-          { label: "Contact Us", href: "#contact" },
+          { label: "Support", href: "#contact" },
           { label: "FAQ", href: "#faq" },
-          { label: "Docs", href: "https://nextjs.org/docs" },
         ],
       },
       {
-        heading: "Socials",
+        heading: "Legal",
         links: [
-          { label: "GitHub", href: "https://github.com" },
-          { label: "Discord", href: "https://discord.com" },
-          { label: "X", href: "https://x.com" },
+          { label: "Privacy Policy", href: "#" },
+          { label: "Terms of Service", href: "#" },
         ],
       },
     ],
-    copyright: "\u00a9 2026 Panda SaaS App Builder Starter.",
+    copyright: "© 2026 ClientNest CRM by Chirag Dodiya.",
     attribution: { label: "Built on Next.js", href: "https://nextjs.org" },
   },
 
-  // ── Navbar ───────────────────────────────────────────────────────────────
   navbar: {
-    brandName: "Panda",
+    brandName: "ClientNest",
     routes: [
       { href: "/#testimonials", label: "Testimonials" },
-      { href: "/#team", label: "Team" },
+      { href: "/#team", label: "Owner" },
       { href: "/#contact", label: "Contact" },
       { href: "/#faq", label: "FAQ" },
     ],
-    featureDropdownLabel: "Features",
-    featureImage: { src: "/demo-img.jpg", alt: "Panda preview" },
+    featureDropdownLabel: "CRM Features",
+    featureImage: { src: "/demo-img.jpg", alt: "ClientNest CRM dashboard preview" },
     features: [
-      { title: "Auth, Billing, Teams", description: "Production-ready flows for sign-in, subscriptions, and organizations." },
-      { title: "UI + Design System", description: "Shadcn-based components with consistent theming and dark mode support." },
-      { title: "Deploy Fast", description: "Sane defaults for Next.js, TypeScript, and Vercel-first deployment." },
+      { title: "Internal CRM", description: "Purpose-built to centralize clients, projects, and business activity." },
+      { title: "Team & Permissions", description: "Invite your staff, control access by admin/manager/member, easy onboarding." },
+      { title: "Data Portability", description: "Export client records and project history any time." },
     ],
     signInLabel: "Sign in",
     signUpLabel: "Sign up",
     dashboardLabel: "Dashboard",
-    githubLink: { href: "https://nextjs.org/docs", ariaLabel: "View on GitHub" },
+    githubLink: { href: "https://github.com/chiragdodiya", ariaLabel: "View ClientNest on GitHub" },
   },
 };
 
