@@ -5,7 +5,8 @@ if (apiKey) {
   sgMail.setApiKey(apiKey);
 }
 
-const fromEmail = process.env.SENDGRID_FROM_EMAIL ?? "noreply@example.com";
+// Update: from email now always defaults to Chirag's address if not configured.
+const fromEmail = process.env.SENDGRID_FROM_EMAIL ?? "hi@chirag.co";
 
 export async function sendEmail(
   to: string,
